@@ -1,9 +1,14 @@
 # Mini Coffee Shop Management
-> A simple coffee shop management website for small coffee shop by React (Antd), FastAPI, and SQLite3
+> A simple coffee shop management website for small coffee shop by React (AntD), FastAPI, and SQLite3
 
 ## Installing Dependencies
 - Install SQLite3 for database
-- Install all npm packages by running "npm install" on frontend directory
+- Install all npm packages by running "npm install" on root of frontend directory
+
+#### Extra Notes
+- React ver: 19.1.1
+- React-dom ver: 19.1.1
+- AntD ver: 5.27.1
 
 ## Running the Website
 1. Run frontend and backend in parallel.
