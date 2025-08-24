@@ -22,4 +22,8 @@
 5. To run backend:
    - Switch to backend directory
    - Go to terminal and run: "uvicorn main:app --reload"
+6. To run SQLite3 and check table state:
+   - Switch to backend directory
+   - Go to terminal and run "sqlite3 database.db"
+   - Give SQL instructions as usual. If you want to check tables use ".tables"
    
