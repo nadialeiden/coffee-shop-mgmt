@@ -3,6 +3,7 @@ from database import get_connection
 
 router = APIRouter()
 
+# Get all user information
 @router.get("/")
 def get_users():
     conn = get_connection()
@@ -15,6 +16,7 @@ def get_users():
     conn.close()
     return users
 
+# Create new user through post
 @router.post("/")
 def add_user(user: dict):
     conn = get_connection()
@@ -35,6 +37,7 @@ def add_user(user: dict):
     conn.close()
     return {"id": user_id, **user}
 
+# Update user through put
 @router.put("/{user_id}")
 def update_user(user_id: int, user: dict):
     conn = get_connection()
@@ -56,6 +59,7 @@ def update_user(user_id: int, user: dict):
     conn.close()
     return {"id": user_id, **user}
 
+# Delete user
 @router.delete("/{user_id}")
 def delete_user(user_id: int):
     conn = get_connection()

@@ -4,6 +4,7 @@ from datetime import datetime
 
 router = APIRouter()
 
+# Get all of the order data
 @router.get("/")
 def get_orders():
     conn = get_connection()
@@ -49,7 +50,7 @@ def get_orders():
 
     return list(orders.values())
 
-
+# Creating new order data through post
 @router.post("/")
 def create_order(order: dict):
     print(order)
@@ -113,6 +114,7 @@ def create_order(order: dict):
     finally:
         conn.close()
 
+# Update order data
 @router.put("/{order_id}")
 def update_order(order: dict, order_id: int):
     try:
@@ -186,7 +188,7 @@ def update_order(order: dict, order_id: int):
     finally:
         conn.close()
 
-
+# Delete order data
 @router.delete("/{order_id}")
 def delete_user(order_id: int):
     conn = get_connection()

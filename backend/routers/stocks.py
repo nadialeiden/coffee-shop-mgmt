@@ -3,6 +3,7 @@ from database import get_connection
 
 router = APIRouter()
 
+# Get all item stock informations
 @router.get("/")
 def get_items():
     conn = get_connection()
@@ -16,7 +17,7 @@ def get_items():
     return stocks
 
 
-
+# Add new item and stock information
 @router.post("/")
 def add_items(item: dict):
     conn = get_connection()
@@ -31,6 +32,7 @@ def add_items(item: dict):
     conn.close()
     return {"id": item_id, **item}
 
+# Delete item and stock information
 @router.delete("/{item_id}")
 def delete_item(item_id: int):
     conn = get_connection()
@@ -47,7 +49,7 @@ def delete_item(item_id: int):
     conn.close()
     return {"message": "Items deleted successfully"}
 
-
+# Update item and stock information
 @router.put("/{item_id}")
 def update_item(item_id: int, item: dict):
     conn = get_connection()

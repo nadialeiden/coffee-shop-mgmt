@@ -5,7 +5,8 @@ DB_PATH = "database.db"
 def get_connection():
     return sqlite3.connect(DB_PATH)
 
-# Buat table users kalau belum ada
+#Initiate all the tables needed if tables is not existing yet
+
 def init_db():
     conn = get_connection()
     c = conn.cursor()
@@ -30,6 +31,7 @@ def init_db():
     )
     ''')
 
+    #Coffee Orders
     c.execute('''
     CREATE TABLE IF NOT EXISTS orders (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,6 +41,7 @@ def init_db():
     )
     ''')
 
+    #Coffee Orders - Items (This is to specify items many-to-one relationship with orders)
     c.execute('''
     CREATE TABLE IF NOT EXISTS order_items (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
