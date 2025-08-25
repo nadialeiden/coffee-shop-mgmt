@@ -25,5 +25,15 @@
 6. To run SQLite3 and check table state:
    - Switch to backend directory
    - Go to terminal and run "sqlite3 database.db"
-   - Give SQL instructions as usual. If you want to check tables use ".tables"
+   - Give SQL instructions as usual. If you want to check tables use ".tables
+
+## Screenshots
+### 1. Coffee Orders
+![CoffeeOrders](screenshot/coffee-shop-management.png)
+
+### 2. Coffee Stock
+![CoffeeStock](screenshot/coffee-shop-management2.png)
+
+### 3. Customer Data
+![CustomerData](screenshot/coffee-shop-management3.png)
    
