@@ -11,7 +11,7 @@ const UserTable = () => {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const { Title } = Typography;
 
-  // Fetch data dari backend
+  // Fetch user data from backend
   const fetchUsers = async () => {
     setLoading(true);
     try {
@@ -32,7 +32,7 @@ const UserTable = () => {
     fetchUsers();
   }, []);
 
-
+  // Function to handle form submission through modal
   const onFinish = async (values) => {
     try {
       let res;
@@ -71,12 +71,14 @@ const UserTable = () => {
     }
   };
 
+  // onEdit is to mark user is currently editing before submitting to backend
   const onEdit = (record) => {
     setEditingUser(record);
     form.setFieldsValue(record);
     setIsModalOpen(true);
   };
 
+  // Functions to handle deletion of record. OnDelete will trigger modal then followed by handleDelete after click "OK" on modal
   const onDelete = (record) => {
     setSelectedRecord(record);
     setDeleteModal(true);
@@ -101,6 +103,7 @@ const UserTable = () => {
     }
   }
 
+  // Columns to be rendered on the table
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },
     { title: "Username", dataIndex: "username", key: "username"},

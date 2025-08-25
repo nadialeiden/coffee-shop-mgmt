@@ -23,6 +23,7 @@ const StockCards = () => {
         currentPage * pageSize
     );
 
+    // Fetching all items
     const fetchItems = async () => {
         try {
             const res = await fetch("http://127.0.0.1:8000/stocks");
@@ -37,6 +38,7 @@ const StockCards = () => {
         }
     };
 
+    // Functions to handle form submission to backend
     const onFinish = async (values) => {
         try {
             let res;
@@ -75,12 +77,14 @@ const StockCards = () => {
         }
     };
 
+    // Function to mark user is currently editing a specific record and get record id
     const onEdit = (record) => {
         setEditingCoffee(record);
         form.setFieldsValue(record);
         setIsModalOpen(true);
     };
 
+    // Functions to handle deletion of record. OnDelete will trigger modal then followed by handleDelete after click "OK" on modal
     const onDelete = (record) => {
         setSelectedRecord(record);
         setDeleteModal(true);
@@ -105,6 +109,7 @@ const StockCards = () => {
         }
     }
 
+    // Fetching items on initial page loading
     useEffect(() => {
         fetchItems();
     }, []);

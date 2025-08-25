@@ -13,6 +13,7 @@ const OrderTable = () => {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [deleteModal, setDeleteModal] = useState(false)
 
+  // Fetching all orders
   const fetchOrders = async () => {
     setLoading(true);
     try {
@@ -34,6 +35,7 @@ const OrderTable = () => {
     setLoading(false);
   };
 
+  // Fetching Coffees to populate dropdown
   const fetchCoffees = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8000/stocks");
@@ -48,12 +50,13 @@ const OrderTable = () => {
     }
   };
 
-
+  // On page load, fetch all orders and coffees
   useEffect(() => {
     fetchOrders();
     fetchCoffees();
   }, []);
 
+  // Functions to handle form submission to backend
   const onFinish = async (values) => {
     try {
       let res;
@@ -99,9 +102,11 @@ const OrderTable = () => {
     }
   };
 
+  // Functions to handle editing of record
   const onEdit = (record) => {
     const fullOrder = orders[record.order_id];
 
+    // Value must be converted first in order to be displayed on the frontend form modal
     form.setFieldsValue({
       customer_name: fullOrder.customer_name,
       created_at: fullOrder.created_at 
@@ -119,6 +124,7 @@ const OrderTable = () => {
     
   };
 
+  // Functions to handle deletion of record. OnDelete will trigger modal then followed by handleDelete after click "OK" on modal
   const onDelete = (record) => {
     setSelectedRecord(record.order_id);
     setDeleteModal(true);
@@ -143,6 +149,7 @@ const OrderTable = () => {
     }
   }
 
+  // Columns to be rendered in table
   const columns = [
     { title: "Order ID", dataIndex: "order_id", key: "order_id" },
     { title: "Customer", dataIndex: "customer_name", key: "customer_name"},
